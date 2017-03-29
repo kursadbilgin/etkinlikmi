@@ -41,6 +41,7 @@ INSTALLED_APPS = [
 
     # Internal Applications
     'core',
+    'user',
 
 ]
 
@@ -61,7 +62,7 @@ ROOT_URLCONF = 'etkinlikmi.apps.core.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(PACKAGE_ROOT, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -76,10 +77,16 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'etkinlikmi.wsgi.application'
 
+AUTH_USER_MODEL = 'user.User'
+
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
 
 LANGUAGE_CODE = 'tr-TR'
+
+LOCALE_PATHS = [
+    os.path.join(PACKAGE_ROOT, 'locale')
+]
 
 TIME_ZONE = 'Europe/Istanbul'
 
@@ -94,3 +101,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(PACKAGE_ROOT, 'static/')
