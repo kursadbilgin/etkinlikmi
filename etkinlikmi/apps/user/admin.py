@@ -26,20 +26,23 @@ class UserAdmin(_UserAdmin):
             'fields' : ('last_login',)
         }),
         (_(u'Permissions'), {
-            'fields' : ('is_active', 'is_staff', 'is_superuser', 'groups', 'user_permissions')
+            'fields' : ('is_active', 'is_staff', 'is_superuser', 'groups',
+                        'user_permissions')
         }),
     )
 
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('email', 'first_name', 'last_name', 'city', 'password1', 'password2', 'groups')}
+            'fields': ('email', 'first_name', 'last_name', 'city', 'password1',
+                        'password2', 'groups', 'user_permissions')}
         ),
     )
 
     form = UserChangeForm
 
-    list_display = ('first_name', 'last_name', 'city', 'email', 'is_active', 'is_superuser', 'is_staff')
+    list_display = ('first_name', 'last_name', 'city', 'email', 'is_active',
+                    'is_superuser', 'is_staff')
     list_filter = ('is_active', 'is_staff')
     search_fields = ('email', 'first_name', 'last_name')
     readonly_fields = ('last_login',)

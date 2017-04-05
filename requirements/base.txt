@@ -1,0 +1,9 @@
+# General
+Django==1.9.12
+
+# Map
+django-geoposition==0.3.0
+
+# Image
+easy_thumbnails==2.3
+Pillow==4.0.0

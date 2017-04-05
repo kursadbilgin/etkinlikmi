@@ -9,12 +9,12 @@ https://docs.djangoproject.com/en/1.9/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.9/ref/settings/
 """
-
+# Standart Library
 import os
 import sys
 
 # Local Django
-from .secret import SECRET_KEY
+from .secret import SECRET_KEY, GOOGLE_MAP_API_KEY
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 PACKAGE_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
@@ -39,9 +39,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'etkinlikmi',
 
+    # External Applications
+    'geoposition',
+    'easy_thumbnails',
+
     # Internal Applications
     'core',
     'user',
+    'activity',
 
 ]
 
@@ -79,6 +84,19 @@ WSGI_APPLICATION = 'etkinlikmi.wsgi.application'
 
 AUTH_USER_MODEL = 'user.User'
 
+# Django Geoposition
+GEOPOSITION_GOOGLE_MAPS_API_KEY = GOOGLE_MAP_API_KEY
+
+GEOPOSITION_MAP_OPTIONS = {
+    'minZoom': 7,
+    'maxZoom': 20,
+    'center': {'lat': 41.008238, 'lng': 28.978359},
+    'scrollwheel': False
+}
+GEOPOSITION_MARKER_OPTIONS = {
+    'position': {'lat': 41.008238, 'lng': 28.978359}
+}
+
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
 
@@ -102,3 +120,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(PACKAGE_ROOT, 'static/')
+
+
+# Absolute filesystem path to the directory that will hold user-uploaded files.
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')

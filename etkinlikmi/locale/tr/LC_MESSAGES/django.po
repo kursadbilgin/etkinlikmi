@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-29 12:11+0300\n"
+"POT-Creation-Date: 2017-04-05 15:27+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,22 +18,134 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: etkinlikmi/apps/core/models.py:8
-msgid "Create Date"
-msgstr "Oluşturulma Tarihi"
+#: etkinlikmi/apps/activity/admin.py:14 etkinlikmi/apps/activity/models.py:64
+msgid "Link"
+msgstr "Link"
 
-#: etkinlikmi/apps/core/models.py:9
-msgid "Update Date"
-msgstr "Güncellenme Tarihi"
+#: etkinlikmi/apps/activity/admin.py:15
+msgid "Links"
+msgstr "Linkler"
 
-#: etkinlikmi/apps/core/models.py:15 etkinlikmi/apps/core/models.py:18
-#: etkinlikmi/apps/user/models.py:44
+#: etkinlikmi/apps/activity/admin.py:22 etkinlikmi/apps/activity/models.py:79
+msgid "Document"
+msgstr "Döküman"
+
+#: etkinlikmi/apps/activity/admin.py:23
+msgid "Documents"
+msgstr "Dökümanlar"
+
+#: etkinlikmi/apps/activity/admin.py:30
+msgid "Map"
+msgstr "Harita"
+
+#: etkinlikmi/apps/activity/admin.py:31
+msgid "Maps"
+msgstr "Haritalar"
+
+#: etkinlikmi/apps/activity/admin.py:39
+msgid "Base Information"
+msgstr "Temel Bilgiler"
+
+#: etkinlikmi/apps/activity/admin.py:42
+msgid "Address Information"
+msgstr "Adres Bilgiler"
+
+#: etkinlikmi/apps/activity/admin.py:45 etkinlikmi/apps/activity/models.py:25
+msgid "Image"
+msgstr "Resim"
+
+#: etkinlikmi/apps/activity/admin.py:48 etkinlikmi/apps/activity/models.py:30
+msgid "Statement"
+msgstr "Açıklama"
+
+#: etkinlikmi/apps/activity/apps.py:7 etkinlikmi/apps/activity/models.py:33
+#: etkinlikmi/apps/activity/models.py:52 etkinlikmi/apps/activity/models.py:62
+#: etkinlikmi/apps/activity/models.py:77
+msgid "Activity"
+msgstr "Etkinlik"
+
+#: etkinlikmi/apps/activity/models.py:20 etkinlikmi/apps/user/apps.py:7
+#: etkinlikmi/apps/user/models.py:54
+msgid "User"
+msgstr "Kullanıcı"
+
+#: etkinlikmi/apps/activity/models.py:21 etkinlikmi/apps/core/models.py:35
+#: etkinlikmi/apps/core/models.py:38
+msgid "Kind"
+msgstr "Tür"
+
+#: etkinlikmi/apps/activity/models.py:22
+msgid "Name"
+msgstr "İsim"
+
+#: etkinlikmi/apps/activity/models.py:23
+msgid "Date"
+msgstr "Tarih"
+
+#: etkinlikmi/apps/activity/models.py:28 etkinlikmi/apps/core/models.py:23
+#: etkinlikmi/apps/core/models.py:27 etkinlikmi/apps/user/models.py:44
 msgid "City"
 msgstr "Şehir"
 
-#: etkinlikmi/apps/core/models.py:19
+#: etkinlikmi/apps/activity/models.py:29
+msgid "Address"
+msgstr "Adres"
+
+#: etkinlikmi/apps/activity/models.py:34
+msgid "Activitys"
+msgstr "Etkinlikler"
+
+#: etkinlikmi/apps/activity/models.py:50
+msgid "Coordinates"
+msgstr "Koordinat"
+
+#: etkinlikmi/apps/activity/models.py:56
+msgid "Activity Map"
+msgstr "Etkinlik Harita"
+
+#: etkinlikmi/apps/activity/models.py:57
+msgid "Activity Maps"
+msgstr "Etkinlik Haritaları"
+
+#: etkinlikmi/apps/activity/models.py:68
+msgid "Activity Link"
+msgstr "Etkinlik Link"
+
+#: etkinlikmi/apps/activity/models.py:69
+msgid "Activity Links"
+msgstr "Etkinlik Linkleri"
+
+#: etkinlikmi/apps/activity/models.py:83
+msgid "Activity Document"
+msgstr "Etkinlik Döküman"
+
+#: etkinlikmi/apps/activity/models.py:84
+msgid "Activity Documents"
+msgstr "Etkinlik Dökümanlar"
+
+#: etkinlikmi/apps/core/apps.py:8
+msgid "Core"
+msgstr "Genel"
+
+#: etkinlikmi/apps/core/models.py:12
+msgid "Create Date"
+msgstr "Oluşturulma Tarihi"
+
+#: etkinlikmi/apps/core/models.py:15
+msgid "Update Date"
+msgstr "Güncellenme Tarihi"
+
+#: etkinlikmi/apps/core/models.py:24
+msgid "Coordinat"
+msgstr "Koordinat"
+
+#: etkinlikmi/apps/core/models.py:28
 msgid "Cities"
 msgstr "Şehirler"
+
+#: etkinlikmi/apps/core/models.py:39
+msgid "Kinds"
+msgstr "Türler"
 
 #: etkinlikmi/apps/user/admin.py:19
 msgid "Base Informations"
@@ -84,15 +196,11 @@ msgstr "Soyisim"
 
 #: etkinlikmi/apps/user/models.py:45
 msgid "Active"
-msgstr "Etkinlik"
+msgstr "Aktif"
 
 #: etkinlikmi/apps/user/models.py:46
 msgid "Staff"
 msgstr "Çalışan"
-
-#: etkinlikmi/apps/user/models.py:54
-msgid "User"
-msgstr "Kullanıcı"
 
 #: etkinlikmi/apps/user/models.py:55
 msgid "Users"
