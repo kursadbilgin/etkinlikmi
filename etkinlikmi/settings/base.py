@@ -91,8 +91,9 @@ GEOPOSITION_MAP_OPTIONS = {
     'minZoom': 7,
     'maxZoom': 20,
     'center': {'lat': 41.008238, 'lng': 28.978359},
-    'scrollwheel': False
+    'scrollwheel': False,
 }
+
 GEOPOSITION_MARKER_OPTIONS = {
     'position': {'lat': 41.008238, 'lng': 28.978359}
 }

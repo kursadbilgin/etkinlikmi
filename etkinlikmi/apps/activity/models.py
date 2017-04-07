@@ -12,21 +12,40 @@ from django.utils.translation import ugettext_lazy as _
 from user.models import User
 from core.models import DateModel, Kind, City
 
+
+BOOL_CHOICES = ((True, _('Wage Earner')), (False, _('Free')))
+
+
 def set_activity_image_upload_path(instance, filename):
     return os.path.join("activity_%d" % instance.id, 'images', filename)
 
 
 class Activity(DateModel):
     user = models.ForeignKey(verbose_name=_('User'), to=User)
+
+    # Base
     kind = models.ForeignKey(verbose_name=_('Kind'), to=Kind)
     name = models.CharField(verbose_name=_('Name'), max_length=50)
-    date = models.DateField(verbose_name=_('Date'))
+
+    # Time
+    starting_date = models.DateField(verbose_name=_('Starting Date'))
+    end_date = models.DateField(verbose_name=_('End Date'), null=True, blank=True)
+    starting_time = models.TimeField(verbose_name=_('Starting Time'))
+    end_time = models.TimeField(verbose_name=_('End Time'), null=True, blank=True)
+
+    # Wage Status
+    wage_status = models.BooleanField(verbose_name=_('Wage Status'), choices=BOOL_CHOICES)
+
+    # Address
+    cities = models.ManyToManyField(verbose_name=_('Cities'), to=City)
+
+    # Image
     image = models.ImageField(
         verbose_name=_('Image'), null=True, blank=True,
         upload_to=set_activity_image_upload_path
     )
-    city = models.ForeignKey(verbose_name=_('City'), to=City)
-    address = models.TextField(verbose_name=_('Address'), null=True, blank=True)
+
+    # Statement
     statement = models.TextField(verbose_name=_('Statement'), max_length=1000)
 
     class Meta:
@@ -45,24 +64,27 @@ class Activity(DateModel):
 
         return super(Activity, self).save(*args, **kwargs)
 
+    def get_cities(self):
+        return ",\n".join([str(cities) for cities in self.cities.all()])
 
-class ActivityMap(DateModel):
-    coordinates = GeopositionField(verbose_name=_('Coordinates'))
+
+class ActivityAddress(DateModel):
+    city = models.ForeignKey(verbose_name=_('City'), to=City)
+    address = models.TextField(verbose_name=_('Address'), null=True)
+    coordinates = GeopositionField(verbose_name=_('Coordinates'), null=True)
     activity = models.ForeignKey(
         verbose_name=_('Activity'), to='activity.Activity'
     )
 
     class Meta:
-        verbose_name = _('Activity Map')
-        verbose_name_plural = _('Activity Maps')
+        verbose_name = _('Activity Address')
+        verbose_name_plural = _('Activity Address')
         ordering = ('activity',)
 
 
 class ActivityLink(DateModel):
     activity = models.ForeignKey(verbose_name=_('Activity'), to=Activity)
-    link = models.URLField(
-        verbose_name=_('Link'), max_length=300, null=True, blank=True
-    )
+    link = models.URLField(verbose_name=_('Link'), null=True)
 
     class Meta:
         verbose_name=_('Activity Link')
