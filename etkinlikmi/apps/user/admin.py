@@ -10,6 +10,7 @@ from django.utils.translation import ugettext_lazy as _
 # Local Django
 from user.models import User
 from user.forms import UserChangeForm
+from core.variables import GROUP_DEFAULT
 
 @admin.register(User)
 class UserAdmin(_UserAdmin):
@@ -47,3 +48,54 @@ class UserAdmin(_UserAdmin):
     search_fields = ('email', 'first_name', 'last_name')
     readonly_fields = ('last_login',)
     ordering = ('first_name', 'last_name')
+
+
+    def get_fieldsets(self, request, obj=None):
+        fieldsets = super(UserAdmin, self).get_fieldsets(request, obj)
+
+        custom_fieldsets = deepcopy(fieldsets)
+
+        if not request.user.is_superuser:
+            exclude_fieldsets = [ _('Permissions'), _('Groups')]
+
+            custom_fieldsets = [
+                field for field in custom_fieldsets if field[0] not in exclude_fieldsets
+            ]
+
+        return custom_fieldsets
+
+
+    def get_queryset(self, request):
+        qs = super(UserAdmin, self).get_queryset(request)
+
+        if not request.user.is_superuser:
+            qs = qs.filter(pk=request.user.id)
+
+        return qs
+
+    def delete_selected(self, request, obj):
+        for user in obj.all():
+            if not user.is_superuser:
+                user.delete()
+
+    delete_selected.short_description = _("Delete selected Users")
+
+    def get_actions(self, request):
+        actions = super(UserAdmin, self).get_actions(request)
+
+        if not request.user.is_superuser:
+            del actions['delete_selected']
+
+        return actions
+
+    def has_add_permission(self, request):
+        if request.user.is_superuser:
+            return True
+        else:
+            return False
+
+    def has_delete_permission(self, request, obj=None):
+        if request.user.is_superuser:
+            return True
+        else:
+            return False
