@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     # External Applications
     'geoposition',
     'easy_thumbnails',
+    'rest_framework',
 
     # Internal Applications
     'core',
@@ -88,14 +89,14 @@ AUTH_USER_MODEL = 'user.User'
 GEOPOSITION_GOOGLE_MAPS_API_KEY = GOOGLE_MAP_API_KEY
 
 GEOPOSITION_MAP_OPTIONS = {
-    'minZoom': 7,
+    'minZoom': 6,
     'maxZoom': 20,
     'center': {'lat': 41.008238, 'lng': 28.978359},
     'scrollwheel': False,
 }
 
 GEOPOSITION_MARKER_OPTIONS = {
-    'position': {'lat': 41.008238, 'lng': 28.978359}
+    'position': {'lat': 41.008238, 'lng': 28.978359},
 }
 
 # Internationalization
@@ -126,3 +127,6 @@ STATIC_ROOT = os.path.join(PACKAGE_ROOT, 'static/')
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+# Max Documents Size
+MAX_UPLOAD_SIZE = 1048576

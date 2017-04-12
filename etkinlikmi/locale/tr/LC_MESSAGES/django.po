@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-08 14:16+0300\n"
+"POT-Creation-Date: 2017-04-12 16:44+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,59 +18,68 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: etkinlikmi/apps/activity/admin.py:17 etkinlikmi/apps/activity/models.py:87
+#: etkinlikmi/apps/activity/admin.py:18 etkinlikmi/apps/activity/models.py:92
 msgid "Link"
 msgstr "Link"
 
-#: etkinlikmi/apps/activity/admin.py:18
+#: etkinlikmi/apps/activity/admin.py:19
 msgid "Links"
 msgstr "Linkler"
 
-#: etkinlikmi/apps/activity/admin.py:25 etkinlikmi/apps/activity/models.py:101
+#: etkinlikmi/apps/activity/admin.py:27 etkinlikmi/apps/activity/forms.py:13
+#: etkinlikmi/apps/activity/models.py:108
 msgid "Document"
 msgstr "Döküman"
 
-#: etkinlikmi/apps/activity/admin.py:26
+#: etkinlikmi/apps/activity/admin.py:28
 msgid "Documents"
 msgstr "Dökümanlar"
 
-#: etkinlikmi/apps/activity/admin.py:33 etkinlikmi/apps/activity/models.py:73
+#: etkinlikmi/apps/activity/admin.py:35 etkinlikmi/apps/activity/models.py:75
 msgid "Address"
 msgstr "Adres"
 
-#: etkinlikmi/apps/activity/admin.py:34
+#: etkinlikmi/apps/activity/admin.py:36
 msgid "Addresses"
 msgstr "Adresler"
 
-#: etkinlikmi/apps/activity/admin.py:42
+#: etkinlikmi/apps/activity/admin.py:44
 msgid "Base Information"
 msgstr "Temel Bilgiler"
 
-#: etkinlikmi/apps/activity/admin.py:45
+#: etkinlikmi/apps/activity/admin.py:47
 msgid "Date and Time Information"
 msgstr "Tarih ve Saat Bilgileri"
 
-#: etkinlikmi/apps/activity/admin.py:48
+#: etkinlikmi/apps/activity/admin.py:50
 msgid "Wage Status Information"
 msgstr "Ücret Durumu Bilgisi"
 
-#: etkinlikmi/apps/activity/admin.py:51
+#: etkinlikmi/apps/activity/admin.py:53
 msgid "City Information"
 msgstr "Şehir Bilgisi"
 
-#: etkinlikmi/apps/activity/admin.py:54 etkinlikmi/apps/activity/models.py:44
+#: etkinlikmi/apps/activity/admin.py:56 etkinlikmi/apps/activity/models.py:46
 msgid "Image"
 msgstr "Resim"
 
-#: etkinlikmi/apps/activity/admin.py:57 etkinlikmi/apps/activity/models.py:49
+#: etkinlikmi/apps/activity/admin.py:59 etkinlikmi/apps/activity/models.py:51
 msgid "Statement"
 msgstr "Açıklama"
 
-#: etkinlikmi/apps/activity/apps.py:7 etkinlikmi/apps/activity/models.py:52
-#: etkinlikmi/apps/activity/models.py:76 etkinlikmi/apps/activity/models.py:86
-#: etkinlikmi/apps/activity/models.py:99
+#: etkinlikmi/apps/activity/apps.py:7 etkinlikmi/apps/activity/models.py:54
+#: etkinlikmi/apps/activity/models.py:78 etkinlikmi/apps/activity/models.py:90
+#: etkinlikmi/apps/activity/models.py:105
 msgid "Activity"
 msgstr "Etkinlik"
+
+#: etkinlikmi/apps/activity/forms.py:22
+msgid "Please only upload document (doc, pdf, txt, exel, powerpoint)."
+msgstr "Lütfen yalnızca doküman yükleyin (doc, pdf, txt, exel, powerpoint)."
+
+#: etkinlikmi/apps/activity/forms.py:26
+msgid "Please keep filesize under (1MB)."
+msgstr "Lütfen dosya boyutunu koruyun (1MB)"
 
 #: etkinlikmi/apps/activity/models.py:16
 msgid "Wage Earner"
@@ -110,46 +119,50 @@ msgstr "Başlangıç Saati"
 msgid "End Time"
 msgstr "Bitiş Saati"
 
-#: etkinlikmi/apps/activity/models.py:37
+#: etkinlikmi/apps/activity/models.py:38
 msgid "Wage Status"
 msgstr "Ücret Durumu"
 
-#: etkinlikmi/apps/activity/models.py:40 etkinlikmi/apps/core/models.py:28
+#: etkinlikmi/apps/activity/models.py:42 etkinlikmi/apps/core/models.py:28
 msgid "Cities"
 msgstr "Şehirler"
 
-#: etkinlikmi/apps/activity/models.py:53
+#: etkinlikmi/apps/activity/models.py:55
 msgid "Activitys"
 msgstr "Etkinlikler"
 
-#: etkinlikmi/apps/activity/models.py:72 etkinlikmi/apps/core/models.py:23
+#: etkinlikmi/apps/activity/models.py:74 etkinlikmi/apps/core/models.py:23
 #: etkinlikmi/apps/core/models.py:27 etkinlikmi/apps/user/models.py:44
 msgid "City"
 msgstr "Şehir"
 
-#: etkinlikmi/apps/activity/models.py:74
+#: etkinlikmi/apps/activity/models.py:76
 msgid "Coordinates"
 msgstr "Koordinat"
 
-#: etkinlikmi/apps/activity/models.py:80 etkinlikmi/apps/activity/models.py:81
+#: etkinlikmi/apps/activity/models.py:83 etkinlikmi/apps/activity/models.py:84
 msgid "Activity Address"
 msgstr "Etkinlik Adresi"
 
-#: etkinlikmi/apps/activity/models.py:90
+#: etkinlikmi/apps/activity/models.py:95
 msgid "Activity Link"
 msgstr "Etkinlik Linki"
 
-#: etkinlikmi/apps/activity/models.py:91
+#: etkinlikmi/apps/activity/models.py:96
 msgid "Activity Links"
 msgstr "Etkinlik Linkleri"
 
-#: etkinlikmi/apps/activity/models.py:105
+#: etkinlikmi/apps/activity/models.py:112
 msgid "Activity Document"
 msgstr "Etkinlik Döküman"
 
-#: etkinlikmi/apps/activity/models.py:106
+#: etkinlikmi/apps/activity/models.py:113
 msgid "Activity Documents"
 msgstr "Etkinlik Dökümanlar"
+
+#: etkinlikmi/apps/activity/models.py:118
+msgid "Size"
+msgstr "Boyut"
 
 #: etkinlikmi/apps/core/apps.py:8
 msgid "Core"
@@ -183,15 +196,15 @@ msgstr "Kişisel Bilgiler"
 msgid "Important Informations"
 msgstr "Önemli Bilgiler"
 
-#: etkinlikmi/apps/user/admin.py:29 etkinlikmi/apps/user/admin.py:59
+#: etkinlikmi/apps/user/admin.py:29 etkinlikmi/apps/user/admin.py:67
 msgid "Permissions"
 msgstr "İzinler"
 
-#: etkinlikmi/apps/user/admin.py:59
+#: etkinlikmi/apps/user/admin.py:67
 msgid "Groups"
 msgstr "Grup"
 
-#: etkinlikmi/apps/user/admin.py:81
+#: etkinlikmi/apps/user/admin.py:88
 msgid "Delete selected Users"
 msgstr "Seçilen kullanıcıları sil"
 

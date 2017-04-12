@@ -4,8 +4,8 @@ from copy import deepcopy
 # Django
 from django.contrib import admin
 from django.contrib.auth.models import Group
-from django.contrib.auth.admin import UserAdmin as _UserAdmin
 from django.utils.translation import ugettext_lazy as _
+from django.contrib.auth.admin import UserAdmin as _UserAdmin
 
 # Local Django
 from user.models import User
@@ -36,7 +36,7 @@ class UserAdmin(_UserAdmin):
         (None, {
             'classes': ('wide',),
             'fields': ('email', 'first_name', 'last_name', 'city', 'password1',
-                        'password2', 'groups', 'user_permissions')}
+                        'password2')}
         ),
     )
 
@@ -49,6 +49,14 @@ class UserAdmin(_UserAdmin):
     readonly_fields = ('last_login',)
     ordering = ('first_name', 'last_name')
 
+    def save_model(self, request, obj, form, change):
+        obj.save()
+
+        try:
+            group = Group.objects.get(name=GROUP_DEFAULT)
+            group.user_set.add(obj)
+        except Group.DoesNotExist:
+            pass
 
     def get_fieldsets(self, request, obj=None):
         fieldsets = super(UserAdmin, self).get_fieldsets(request, obj)
@@ -63,7 +71,6 @@ class UserAdmin(_UserAdmin):
             ]
 
         return custom_fieldsets
-
 
     def get_queryset(self, request):
         qs = super(UserAdmin, self).get_queryset(request)

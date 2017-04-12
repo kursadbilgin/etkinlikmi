@@ -1,8 +1,8 @@
 # Django
 from django.db import models
 from django.conf import settings
-from django.contrib.auth.models import BaseUserManager, AbstractBaseUser, PermissionsMixin
 from django.utils.translation import ugettext_lazy as _
+from django.contrib.auth.models import BaseUserManager, AbstractBaseUser, PermissionsMixin
 
 # Local Django
 from core.models import City

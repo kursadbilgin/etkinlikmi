@@ -13,7 +13,7 @@ from user.models import User
 from core.models import DateModel, Kind, City
 
 
-BOOL_CHOICES = ((True, _('Wage Earner')), (False, _('Free')))
+BOOL_CHOICES = ('0', _('Wage Earner')), ('1', _('Free'))
 
 
 def set_activity_image_upload_path(instance, filename):
@@ -34,7 +34,9 @@ class Activity(DateModel):
     end_time = models.TimeField(verbose_name=_('End Time'), null=True, blank=True)
 
     # Wage Status
-    wage_status = models.BooleanField(verbose_name=_('Wage Status'), choices=BOOL_CHOICES)
+    wage_status = models.CharField(
+        max_length=10 ,verbose_name=_('Wage Status'), choices=BOOL_CHOICES
+    )
 
     # Address
     cities = models.ManyToManyField(verbose_name=_('Cities'), to=City)
@@ -73,7 +75,8 @@ class ActivityAddress(DateModel):
     address = models.TextField(verbose_name=_('Address'), null=True)
     coordinates = GeopositionField(verbose_name=_('Coordinates'), null=True)
     activity = models.ForeignKey(
-        verbose_name=_('Activity'), to='activity.Activity'
+        verbose_name=_('Activity'), to='activity.Activity',
+        related_name='activity_addresses'
     )
 
     class Meta:
@@ -83,7 +86,9 @@ class ActivityAddress(DateModel):
 
 
 class ActivityLink(DateModel):
-    activity = models.ForeignKey(verbose_name=_('Activity'), to=Activity)
+    activity = models.ForeignKey(
+        verbose_name=_('Activity'), to=Activity, related_name='activity_links'
+    )
     link = models.URLField(verbose_name=_('Link'), null=True)
 
     class Meta:
@@ -96,11 +101,18 @@ def set_activity_document_upload_path(instance, filename):
 
 
 class ActivityDocument(DateModel):
-    activity = models.ForeignKey(verbose_name=_('Activity'), to=Activity)
+    activity = models.ForeignKey(
+        verbose_name=_('Activity'), to=Activity, related_name='activity_documents'
+    )
     document = models.FileField(
-        verbose_name=_('Document'),upload_to=set_activity_document_upload_path
+        verbose_name=_('Document'), upload_to=set_activity_document_upload_path
     )
 
     class Meta:
         verbose_name=_('Activity Document')
         verbose_name_plural=_('Activity Documents')
+
+    def get_size(self):
+        return self.document._get_size()
+
+    get_size.short_description =  _('Size')

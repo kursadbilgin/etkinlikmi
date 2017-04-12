@@ -7,6 +7,7 @@ from django.utils.translation import ugettext_lazy as _
 # Local Django
 from core.models import City
 from core.utils import GROUP_DEFAULT
+from activity.forms import ActivityDocumentAdminForm
 from activity.models import Activity, ActivityLink, ActivityDocument, ActivityAddress
 
 
@@ -19,6 +20,7 @@ class ActivityLinkInline(admin.StackedInline):
 
 
 class ActivityDocumentInline(admin.StackedInline):
+    form = ActivityDocumentAdminForm
     model = ActivityDocument
     extra = 0
     min_num = 0
@@ -29,7 +31,7 @@ class ActivityDocumentInline(admin.StackedInline):
 class ActivityAddressInline(admin.StackedInline):
     model = ActivityAddress
     extra = 0
-    min_num = 0
+    min_num = 1
     verbose_name = _('Address')
     verbose_name_plural = _('Addresses')
 
@@ -64,9 +66,7 @@ class ActivityAdmin(admin.ModelAdmin):
     search_fields = ('kind', 'name', 'kind')
 
     def save_model(self, request, obj, form, change):
-        if not request.user.is_superuser:
-            obj.user = request.user
-
+        obj.user = request.user
         obj.save()
 
     def get_queryset(self, request):
