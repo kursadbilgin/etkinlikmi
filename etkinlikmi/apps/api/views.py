@@ -6,7 +6,7 @@ from user.models import User
 from activity.models import Activity
 
 # Api
-from api.serializers import UserSerializer, ActivitySerializer
+from api.serializers import UserSerializer, ActivityListSerializer, ActivitySerializer
 
 
 class UserViewSet(viewsets.ReadOnlyModelViewSet):
@@ -16,7 +16,11 @@ class UserViewSet(viewsets.ReadOnlyModelViewSet):
 
 class ActivityViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Activity.objects.all()
-    serializer_class = ActivitySerializer
+    def get_serializer_class(self):
+        if self.action == 'list':
+            return ActivityListSerializer
+        else:
+            return ActivitySerializer
 
 
 LIST = (

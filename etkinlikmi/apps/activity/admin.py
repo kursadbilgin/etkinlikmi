@@ -50,9 +50,6 @@ class ActivityAdmin(admin.ModelAdmin):
         (_(u'Wage Status Information'), {
             'fields' : ('wage_status',)
         }),
-        (_(u'City Information'), {
-            'fields' : ('cities',)
-        }),
         (_(u'Image'), {
             'fields' : ('image',)
         }),
@@ -61,7 +58,7 @@ class ActivityAdmin(admin.ModelAdmin):
         }),
     )
 
-    list_display = ('name', 'kind', 'starting_date', 'get_cities', 'wage_status')
+    list_display = ('name', 'kind', 'starting_date', 'wage_status')
     list_filter = ('kind', 'starting_date', 'wage_status')
     search_fields = ('kind', 'name', 'kind')
 

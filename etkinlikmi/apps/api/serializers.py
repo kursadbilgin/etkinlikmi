@@ -12,6 +12,13 @@ class CitySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = City
+        fields = ('city', 'coordinate_city')
+
+
+class CityListSerializer(CitySerializer):
+
+    class Meta:
+        model = City
         fields = ('city',)
 
 
@@ -19,21 +26,31 @@ class KindSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Kind
-        fields = ('name',)
+        fields = ('kind',)
 
 
 class ActivityAddressSerializer(serializers.ModelSerializer):
-    city = serializers.CharField()
+    city = CitySerializer()
 
     class Meta:
         model = ActivityAddress
-        fields = ('city', 'address')
+        fields = ('city', 'address', 'coordinate')
+
+
+class ActivityAddressListSerializer(ActivityAddressSerializer):
+    city = CityListSerializer()
+
+    class Meta:
+        model = ActivityAddress
+        fields = ('city',)
+
 
 class ActivityLinkSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ActivityLink
         fields =('link',)
+
 
 class ActivityDocumentSerializer(serializers.ModelSerializer):
     document = serializers.FileField(use_url=False)
@@ -43,24 +60,40 @@ class ActivityDocumentSerializer(serializers.ModelSerializer):
         fields = ('document',)
 
 
-class ActivitySerializer(serializers.ModelSerializer):
-    cities = CitySerializer(read_only=True, many=True)
+class ActivityBaseSerializer(serializers.ModelSerializer):
+    kind = KindSerializer()
     image = serializers.ImageField(use_url=False)
-    activity_addresses = ActivityAddressSerializer(read_only=True, many=True)
+    wage_status = serializers.CharField(source="get_wage_status_display")
+    starting_date = serializers.DateField(format="%d/%m/%Y")
     activity_links = ActivityLinkSerializer(read_only=True, many=True)
     activity_documents = ActivityDocumentSerializer(read_only=True, many=True)
+
+
+class ActivitySerializer(ActivityBaseSerializer):
+    activity_addresses = ActivityAddressSerializer(read_only=True, many=True)
 
     class Meta:
         model = Activity
         fields = (
-            'name', 'starting_date', 'starting_time', 'end_date', 'end_time',
-            'wage_status', 'cities','image', 'statement', 'activity_documents',
-            'activity_links','activity_addresses'
+            'id', 'kind', 'name', 'starting_date', 'starting_time', 'end_date', 'end_time',
+            'wage_status', 'image', 'statement', 'activity_documents',
+            'activity_links', 'activity_addresses'
+            )
+
+
+class ActivityListSerializer(ActivityBaseSerializer):
+    activity_addresses = ActivityAddressListSerializer(read_only=True, many=True)
+
+    class Meta:
+        model = Activity
+        fields = (
+            'id', 'kind', 'name', 'starting_date', 'starting_time', 'wage_status',
+            'image', 'activity_addresses'
             )
 
 
 class UserSerializer(serializers.ModelSerializer):
-    city = serializers.CharField()
+    city = CityListSerializer()
 
     class Meta:
         model = User

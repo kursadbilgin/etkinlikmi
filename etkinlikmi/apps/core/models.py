@@ -21,7 +21,7 @@ class DateModel(models.Model):
 
 class City(models.Model):
     city = models.CharField(verbose_name=_('City'), max_length=55, unique=True)
-    coordinat = GeopositionField(verbose_name=_('Coordinat'), null=True)
+    coordinate_city = GeopositionField(verbose_name=_('Coordinate'), null=True)
 
     class Meta:
         verbose_name=_(u'City')
@@ -40,3 +40,19 @@ class Kind(models.Model):
 
     def __str__(self):
         return self.kind
+
+
+class SocialAccount(DateModel):
+    name = models.CharField(
+        verbose_name=_('Social Account'), max_length=50, unique=True
+    )
+    style_class = models.CharField(
+        verbose_name=_('Style Class'), max_length=50, null=True, blank=True
+    )
+
+    class Meta:
+        verbose_name=_(u'Social Account')
+        verbose_name_plural=_(u'Social Accounts')
+
+    def __str__(self):
+        return self.name

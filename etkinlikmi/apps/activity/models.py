@@ -10,7 +10,7 @@ from django.utils.translation import ugettext_lazy as _
 
 # Local Django
 from user.models import User
-from core.models import DateModel, Kind, City
+from core.models import DateModel, Kind, City, SocialAccount
 
 
 BOOL_CHOICES = ('0', _('Wage Earner')), ('1', _('Free'))
@@ -38,9 +38,6 @@ class Activity(DateModel):
         max_length=10 ,verbose_name=_('Wage Status'), choices=BOOL_CHOICES
     )
 
-    # Address
-    cities = models.ManyToManyField(verbose_name=_('Cities'), to=City)
-
     # Image
     image = models.ImageField(
         verbose_name=_('Image'), null=True, blank=True,
@@ -66,14 +63,11 @@ class Activity(DateModel):
 
         return super(Activity, self).save(*args, **kwargs)
 
-    def get_cities(self):
-        return ",\n".join([str(cities) for cities in self.cities.all()])
-
 
 class ActivityAddress(DateModel):
     city = models.ForeignKey(verbose_name=_('City'), to=City)
-    address = models.TextField(verbose_name=_('Address'), null=True)
-    coordinates = GeopositionField(verbose_name=_('Coordinates'), null=True)
+    address = models.TextField(verbose_name=_('Address'), null=True, blank=True)
+    coordinate = GeopositionField(verbose_name=_('Coordinate'), null=True, blank=True)
     activity = models.ForeignKey(
         verbose_name=_('Activity'), to='activity.Activity',
         related_name='activity_addresses'
@@ -88,6 +82,9 @@ class ActivityAddress(DateModel):
 class ActivityLink(DateModel):
     activity = models.ForeignKey(
         verbose_name=_('Activity'), to=Activity, related_name='activity_links'
+    )
+    social_account = models.ForeignKey(
+        verbose_name=_('Social Account'), to=SocialAccount
     )
     link = models.URLField(verbose_name=_('Link'), null=True)
 

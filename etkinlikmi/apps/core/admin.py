@@ -4,7 +4,7 @@ from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
 
 # Local Django
-from core.models import City, Kind
+from core.models import City, Kind, SocialAccount
 
 
 @admin.register(City)
@@ -17,3 +17,8 @@ class CityAdmin(admin.ModelAdmin):
 class KindAdmin(admin.ModelAdmin):
     list_display = ('kind',)
     search_fields = ('kind',)
+
+
+@admin.register(SocialAccount)
+class SocialAccountAdmin(admin.ModelAdmin):
+    list_display = ('name', 'style_class')
