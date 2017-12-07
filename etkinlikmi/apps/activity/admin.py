@@ -8,7 +8,7 @@ from django.utils.translation import ugettext_lazy as _
 from core.models import City
 from core.utils import GROUP_DEFAULT
 from activity.forms import ActivityDocumentAdminForm
-from activity.models import Activity, ActivityLink, ActivityDocument, ActivityAddress
+from activity.models import Activity, ActivityLink, ActivityDocument
 
 
 class ActivityLinkInline(admin.StackedInline):
@@ -28,21 +28,13 @@ class ActivityDocumentInline(admin.StackedInline):
     verbose_name_plural = _('Documents')
 
 
-class ActivityAddressInline(admin.StackedInline):
-    model = ActivityAddress
-    extra = 0
-    min_num = 1
-    verbose_name = _('Address')
-    verbose_name_plural = _('Addresses')
-
-
 @admin.register(Activity)
 class ActivityAdmin(admin.ModelAdmin):
-    inlines = [ActivityAddressInline, ActivityLinkInline, ActivityDocumentInline]
+    inlines = [ActivityLinkInline, ActivityDocumentInline]
 
     fieldsets = (
         (_(u'Base Information'), {
-            'fields' : ('kind', 'name'),
+            'fields' : ('city', 'address', 'coordinate', 'kind', 'name'),
         }),
         (_(u'Date and Time Information'), {
             'fields' : (('starting_date', 'end_date'), ('starting_time', 'end_time'))

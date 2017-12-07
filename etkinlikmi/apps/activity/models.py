@@ -24,7 +24,10 @@ class Activity(DateModel):
     user = models.ForeignKey(verbose_name=_('User'), to=User)
 
     # Base
+    city = models.ForeignKey(verbose_name=_('City'), to=City)
     kind = models.ForeignKey(verbose_name=_('Kind'), to=Kind)
+    address = models.TextField(verbose_name=_('Address'), null=True, blank=True)
+    coordinate = GeopositionField(verbose_name=_('Coordinate'), null=True, blank=True)
     name = models.CharField(verbose_name=_('Name'), max_length=50)
 
     # Time
@@ -62,21 +65,6 @@ class Activity(DateModel):
             self.image = saved_image
 
         return super(Activity, self).save(*args, **kwargs)
-
-
-class ActivityAddress(DateModel):
-    city = models.ForeignKey(verbose_name=_('City'), to=City)
-    address = models.TextField(verbose_name=_('Address'), null=True, blank=True)
-    coordinate = GeopositionField(verbose_name=_('Coordinate'), null=True, blank=True)
-    activity = models.ForeignKey(
-        verbose_name=_('Activity'), to='activity.Activity',
-        related_name='activity_addresses'
-    )
-
-    class Meta:
-        verbose_name = _('Activity Address')
-        verbose_name_plural = _('Activity Address')
-        ordering = ('activity',)
 
 
 class ActivityLink(DateModel):

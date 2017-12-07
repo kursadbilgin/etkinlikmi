@@ -5,17 +5,10 @@ from rest_framework import serializers
 from user.models import User
 from core.models import City, Kind
 from activity.models import (
-        Activity, ActivityAddress, ActivityLink, ActivityDocument
+        Activity, ActivityLink, ActivityDocument
     )
 
 class CitySerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = City
-        fields = ('city', 'coordinate_city')
-
-
-class CityListSerializer(CitySerializer):
 
     class Meta:
         model = City
@@ -27,22 +20,6 @@ class KindSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Kind
         fields = ('kind',)
-
-
-class ActivityAddressSerializer(serializers.ModelSerializer):
-    city = CitySerializer()
-
-    class Meta:
-        model = ActivityAddress
-        fields = ('city', 'address', 'coordinate')
-
-
-class ActivityAddressListSerializer(ActivityAddressSerializer):
-    city = CityListSerializer()
-
-    class Meta:
-        model = ActivityAddress
-        fields = ('city',)
 
 
 class ActivityLinkSerializer(serializers.ModelSerializer):
@@ -61,6 +38,7 @@ class ActivityDocumentSerializer(serializers.ModelSerializer):
 
 
 class ActivityBaseSerializer(serializers.ModelSerializer):
+    city = CitySerializer();
     kind = KindSerializer()
     image = serializers.ImageField(use_url=False)
     wage_status = serializers.CharField(source="get_wage_status_display")
@@ -70,30 +48,28 @@ class ActivityBaseSerializer(serializers.ModelSerializer):
 
 
 class ActivitySerializer(ActivityBaseSerializer):
-    activity_addresses = ActivityAddressSerializer(read_only=True, many=True)
 
     class Meta:
         model = Activity
         fields = (
-            'id', 'kind', 'name', 'starting_date', 'starting_time', 'end_date', 'end_time',
-            'wage_status', 'image', 'statement', 'activity_documents',
-            'activity_links', 'activity_addresses'
+            'id', 'city', 'kind', 'address', 'coordinate', 'name', 'starting_date',
+            'starting_time', 'end_date', 'end_time', 'wage_status', 'image', 'statement',
+            'activity_documents', 'activity_links'
             )
 
 
 class ActivityListSerializer(ActivityBaseSerializer):
-    activity_addresses = ActivityAddressListSerializer(read_only=True, many=True)
 
     class Meta:
         model = Activity
         fields = (
-            'id', 'kind', 'name', 'starting_date', 'starting_time', 'wage_status',
-            'image', 'activity_addresses'
+            'id', 'city', 'kind', 'name', 'starting_date', 'starting_time', 'wage_status',
+            'image'
             )
 
 
 class UserSerializer(serializers.ModelSerializer):
-    city = CityListSerializer()
+    city = CitySerializer()
 
     class Meta:
         model = User

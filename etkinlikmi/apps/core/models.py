@@ -21,7 +21,6 @@ class DateModel(models.Model):
 
 class City(models.Model):
     city = models.CharField(verbose_name=_('City'), max_length=55, unique=True)
-    coordinate_city = GeopositionField(verbose_name=_('Coordinate'), null=True)
 
     class Meta:
         verbose_name=_(u'City')
