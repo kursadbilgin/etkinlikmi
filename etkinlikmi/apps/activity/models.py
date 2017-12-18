@@ -24,7 +24,7 @@ class Activity(DateModel):
     user = models.ForeignKey(verbose_name=_('User'), to=User)
 
     # Base
-    city = models.ForeignKey(verbose_name=_('City'), to=City)
+    city = models.ForeignKey(verbose_name=_('City'), to=City, related_name="activity_city")
     kind = models.ForeignKey(verbose_name=_('Kind'), to=Kind)
     address = models.TextField(verbose_name=_('Address'), null=True, blank=True)
     coordinate = GeopositionField(verbose_name=_('Coordinate'), null=True, blank=True)

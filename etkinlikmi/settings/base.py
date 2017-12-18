@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'geoposition',
     'easy_thumbnails',
     'rest_framework',
+    'rest_framework.authtoken',
+    'djoser',
 
     # Internal Applications
     'core',
@@ -61,6 +63,15 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    )
+}
+
 
 ROOT_URLCONF = 'etkinlikmi.apps.core.urls'
 

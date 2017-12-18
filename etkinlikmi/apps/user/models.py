@@ -41,7 +41,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(verbose_name=_('Email'), max_length=255, unique=True)
     first_name = models.CharField(verbose_name=_('First Name'), max_length=50)
     last_name = models.CharField(verbose_name=_('Last Name'), max_length=50)
-    city = models.ForeignKey(verbose_name=_('City'), to='core.City', null=True)
+    city = models.ForeignKey(verbose_name=_('City'), to='core.City', null=True, related_name='user_city')
     is_active = models.BooleanField(verbose_name=_('Active'), default=True)
     is_staff = models.BooleanField(verbose_name=_('Staff'), default=True)
 
