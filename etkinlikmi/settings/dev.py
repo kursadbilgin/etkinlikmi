@@ -30,9 +30,9 @@ AUTH_PASSWORD_VALIDATORS = []
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'etkinlikmi',
-        'USER': 'kursad',
-        'PASSWORD': '157359',
+        'NAME': 'etkinlikmidb',
+        'USER': 'etkinlikmi',
+        'PASSWORD': 'test',
         'HOST': 'localhost',
         'PORT': '',
     }

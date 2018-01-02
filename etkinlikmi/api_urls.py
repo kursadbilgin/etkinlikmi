@@ -13,11 +13,11 @@ from activity.api_views import ActivityViewSetV1
 router_V1 = routers.DefaultRouter()
 
 LIST_V1 = [
-    (r'user', UserViewSetV1, 'user'),
-    (r'activity', ActivityViewSetV1, 'activity'),
-    (r'city', CityViewSetV1, 'city'),
-    (r'kind', KindViewSetV1, 'kind'),
-    (r'social_account', SocialAccountViewSetV1, 'social_account')
+    (r'users', UserViewSetV1, 'users'),
+    (r'activities', ActivityViewSetV1, 'activities'),
+    (r'cities', CityViewSetV1, 'cities'),
+    (r'kinds', KindViewSetV1, 'kinds'),
+    (r'social_accounts', SocialAccountViewSetV1, 'social_accounts')
 ]
 
 for router in LIST_V1:

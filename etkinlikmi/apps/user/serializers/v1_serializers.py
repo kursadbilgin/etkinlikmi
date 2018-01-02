@@ -20,7 +20,7 @@ class UserRetrieveSerializerV1(UserRetrieveSerializer):
 
 
 class UserCreateSerializerV1(UserCreateSerializer):
-    city = CityListSerializerV1(many=True, read_only=True)
+    pass
 
 
 class UserUpdateSerializerV1(UserUpdateSerializer):

@@ -45,17 +45,18 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'djoser',
+    'corsheaders',
 
     # Internal Applications
     'core',
     'user',
-    'activity',
-
+    'activity'
 ]
 
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -66,14 +67,26 @@ MIDDLEWARE_CLASSES = [
 
 
 REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+       'rest_framework.permissions.IsAuthenticated',
+    ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework.authentication.BasicAuthentication',
-        'rest_framework.authentication.SessionAuthentication',
-    )
+       'rest_framework.authentication.SessionAuthentication',
+       'rest_framework.authentication.TokenAuthentication',
+    ),
+    'DEFAULT_VERSIONING_CLASS': 'rest_framework.versioning.NamespaceVersioning',
 }
 
 
-ROOT_URLCONF = 'etkinlikmi.apps.core.urls'
+CORS_ORIGIN_WHITELIST = (
+    'localhost:3000',
+    'localhost:5000',
+    '127.0.0.1:5000',
+    '127.0.0.1:3000'
+)
+
+
+ROOT_URLCONF = 'etkinlikmi.urls'
 
 
 TEMPLATES = [
@@ -96,7 +109,9 @@ WSGI_APPLICATION = 'etkinlikmi.wsgi.application'
 
 AUTH_USER_MODEL = 'user.User'
 
+
 # Django Geoposition
+
 GEOPOSITION_GOOGLE_MAPS_API_KEY = GOOGLE_MAP_API_KEY
 
 GEOPOSITION_MAP_OPTIONS = {
@@ -109,6 +124,7 @@ GEOPOSITION_MAP_OPTIONS = {
 GEOPOSITION_MARKER_OPTIONS = {
     'position': {'lat': 41.008238, 'lng': 28.978359},
 }
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
@@ -138,6 +154,7 @@ STATIC_ROOT = os.path.join(PACKAGE_ROOT, 'static/')
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
 
 # Max Documents Size
 MAX_UPLOAD_SIZE = 1048576

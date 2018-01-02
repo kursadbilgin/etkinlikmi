@@ -4,6 +4,7 @@ from django.utils.translation import ugettext_lazy as _
 
 # Django
 from django.conf import settings
+from django.contrib.auth import password_validation
 
 # Local Django
 from user.models import User
@@ -46,16 +47,23 @@ class UserCreateSerializer(UserSerializer):
             'city', 'email', 'first_name', 'last_name', 'password', 'confirm_password'
         )
         extra_kwargs = {
-            'password': {'write_only': True}
+            'password': {'write_only': True},
+            'city': {'required': True}
         }
 
     def validate_password(self, value):
         if value != self.initial_data.get('confirm_password', None):
-            raise serializers.ValidationError(
+            raise serializers.ValidationError(_(
                 "The two password fields didn't match."
-            )
+            ))
 
         password_validation.validate_password(value)
+
+        return value
+
+    def validate_city(self, value):
+        if not value:
+            raise serializers.ValidationError(_("This field is required."))
 
         return value
 
@@ -77,9 +85,9 @@ class UserPasswordChangeSerializer(serializers.Serializer):
 
     def validate_confirm_new_password(self, value):
         if value != self.initial_data['new_password']:
-            raise serializers.ValidationError(
+            raise serializers.ValidationError(_(
                 "The two password fields didn't match."
-            )
+            ))
 
         password_validation.validate_password(value)
 

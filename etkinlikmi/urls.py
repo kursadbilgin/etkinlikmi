@@ -14,15 +14,14 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 
-# Third-Party
-from rest_framework.authtoken.views import obtain_auth_token
-
-
-#Django
+# Django
 from django.contrib import admin
 from django.conf import settings
 from django.views.static import serve
 from django.conf.urls import url, include
+
+# Local Django
+from core.api_views import LoginView
 
 
 urlpatterns = [
@@ -33,5 +32,6 @@ urlpatterns = [
     url(r'^', include('etkinlikmi.api_urls')),
 
     # Token
-     url(r'^api-token/', obtain_auth_token),
+    url(r'^auth/login', LoginView.as_view(), name='login'),
+    url(r'^auth/', include('djoser.urls.authtoken')),
 ]
