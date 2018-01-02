@@ -35,3 +35,12 @@ urlpatterns = [
     url(r'^auth/login', LoginView.as_view(), name='login'),
     url(r'^auth/', include('djoser.urls.authtoken')),
 ]
+
+
+# Media
+if settings.DEBUG:
+    urlpatterns += (
+        url(r'^media/(?P<path>.*)$', serve, {
+            'document_root': settings.MEDIA_ROOT,
+        }),
+    )

@@ -49,3 +49,8 @@ DATABASES = {
         'PORT': '',
     }
 }
+
+
+# Domain
+
+DOMAIN = 'http://api.etkinlikmi.com'

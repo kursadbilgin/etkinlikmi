@@ -5,6 +5,7 @@ import datetime
 from rest_framework import serializers
 
 # Django
+from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 
 # Local Django
@@ -30,14 +31,8 @@ class ActivityDocumentSerializer(serializers.ModelSerializer):
 
 
 class ActivitySerializer(serializers.ModelSerializer):
-    try:
-        city = City.objects.get(activity_id=id)
-        kind = Kind.objects.get(activity_id=id)
-    except:
-        pass
-    # serializers_city = CitySerializer(many=True, read_only=True)
-    # serializers_kind = KindSerializer(many=True, read_only=True)
-    image = serializers.ImageField(use_url=False)
+    city = CitySerializer()
+    kind = KindSerializer()
     wage_status = serializers.CharField(source="get_wage_status_display")
     starting_date = serializers.DateField(format="%d/%m/%Y")
     starting_time = serializers.TimeField(format="%H:%M")
@@ -50,7 +45,13 @@ class ActivitySerializer(serializers.ModelSerializer):
             'id', 'city', 'kind', 'address', 'coordinate', 'name', 'starting_date',
             'starting_time', 'end_date', 'end_time', 'wage_status', 'image',
             'statement', 'activity_documents', 'activity_links'
-            )
+        )
+
+    def get_image(self, obj):
+        if obj.image:
+            return settings.DOMAIN + obj.image.url
+        else:
+            return None
 
 
 class ActivityListSerializer(ActivitySerializer):
@@ -60,7 +61,7 @@ class ActivityListSerializer(ActivitySerializer):
         fields = (
             'id', 'city', 'kind', 'name', 'starting_date', 'starting_time', 'wage_status',
             'image'
-            )
+        )
 
 
 class ActivityCreateSerializer(ActivitySerializer):
@@ -71,7 +72,7 @@ class ActivityCreateSerializer(ActivitySerializer):
             'city', 'kind', 'address', 'coordinate', 'name', 'starting_date',
             'starting_time', 'end_date', 'end_time', 'wage_status', 'image',
             'statement', 'activity_documents', 'activity_links'
-            )
+        )
 
 
 class ActivityRetrieveSerializer(ActivitySerializer):
@@ -86,4 +87,4 @@ class ActivityUpdateSerializer(ActivitySerializer):
             'city', 'kind', 'address', 'coordinate', 'name', 'starting_date',
             'starting_time', 'end_date', 'end_time', 'wage_status', 'image',
             'statement', 'activity_documents', 'activity_links'
-            )
+        )

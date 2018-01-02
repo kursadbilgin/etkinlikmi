@@ -18,7 +18,7 @@ class ActivityViewSet(mixins.ListModelMixin,
     queryset = Activity.objects.all()
 
     def get_queryset(self):
-        return self.queryset.filter(user=self.request.user)
+        return self.queryset.all()
 
     def get_serializer_class(self):
         if self.action == 'list':
@@ -31,6 +31,14 @@ class ActivityViewSet(mixins.ListModelMixin,
             return ActivityUpdateSerializer
         else:
             return ActivitySerializer
+
+    def get_permissions(self):
+        permissions = super(ActivityViewSet, self).get_permissions()
+
+        if self.action in ['list', 'retrieve']:
+            return []
+
+        return permissions
 
     def perform_create(self, serializer):
         activity = serializer.save(user=self.request.user)
