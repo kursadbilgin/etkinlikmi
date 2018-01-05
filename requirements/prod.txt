@@ -1,1 +1,8 @@
+
 -r base.txt
+
+# Database
+psycopg
+
+# Gunicorn
+gunicorn
