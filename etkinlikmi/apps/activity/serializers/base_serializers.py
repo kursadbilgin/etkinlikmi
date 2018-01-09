@@ -64,14 +64,14 @@ class ActivityListSerializer(ActivitySerializer):
         )
 
 
-class ActivityCreateSerializer(ActivitySerializer):
+class ActivityCreateSerializer(serializers.ModelSerializer):
+    wage_status = serializers.CharField()
 
     class Meta:
         model = Activity
         fields = (
-            'city', 'kind', 'address', 'coordinate', 'name', 'starting_date',
-            'starting_time', 'end_date', 'end_time', 'wage_status', 'image',
-            'statement', 'activity_documents', 'activity_links'
+            'city', 'kind', 'name', 'address', 'coordinate', 'starting_date',
+            'starting_time', 'end_date', 'end_time', 'wage_status', 'image', 'statement'
         )
 
 
