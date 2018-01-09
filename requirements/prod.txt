@@ -1,8 +1,7 @@
-
 -r base.txt
 
 # Database
-psycopg
+psycopg2
 
 # Gunicorn
 gunicorn
