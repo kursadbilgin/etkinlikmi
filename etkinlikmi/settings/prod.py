@@ -36,12 +36,13 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'etkinlikmidb',
         'USER': 'etkinlikmi',
         'PASSWORD': 'test',
@@ -54,3 +55,6 @@ DATABASES = {
 # Domain
 
 DOMAIN = 'http://api.etkinlikmi.com'
+
+
+from .local import *

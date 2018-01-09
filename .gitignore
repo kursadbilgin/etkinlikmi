@@ -91,7 +91,7 @@ ENV/
 
 # Secret Values
 secret.py
-email.py
+local.py
 
 # Database, Media, Static
 *.sqlite3
