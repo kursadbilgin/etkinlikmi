@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-24 15:08+0300\n"
+"POT-Creation-Date: 2018-01-11 19:49+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: etkinlikmi/apps/activity/admin.py:18 etkinlikmi/apps/activity/models.py:89
+#: etkinlikmi/apps/activity/admin.py:18 etkinlikmi/apps/activity/models.py:77
 msgid "Link"
 msgstr "Link"
 
@@ -27,7 +27,7 @@ msgid "Links"
 msgstr "Linkler"
 
 #: etkinlikmi/apps/activity/admin.py:27 etkinlikmi/apps/activity/forms.py:13
-#: etkinlikmi/apps/activity/models.py:105
+#: etkinlikmi/apps/activity/models.py:93
 msgid "Document"
 msgstr "Döküman"
 
@@ -35,37 +35,28 @@ msgstr "Döküman"
 msgid "Documents"
 msgstr "Dökümanlar"
 
-#: etkinlikmi/apps/activity/admin.py:35 etkinlikmi/apps/activity/models.py:69
-msgid "Address"
-msgstr "Adres"
-
 #: etkinlikmi/apps/activity/admin.py:36
-msgid "Addresses"
-msgstr "Adresler"
-
-#: etkinlikmi/apps/activity/admin.py:44
 msgid "Base Information"
 msgstr "Temel Bilgiler"
 
-#: etkinlikmi/apps/activity/admin.py:47
+#: etkinlikmi/apps/activity/admin.py:39
 msgid "Date and Time Information"
 msgstr "Tarih ve Saat Bilgileri"
 
-#: etkinlikmi/apps/activity/admin.py:50
+#: etkinlikmi/apps/activity/admin.py:42
 msgid "Wage Status Information"
 msgstr "Ücret Durumu Bilgisi"
 
-#: etkinlikmi/apps/activity/admin.py:53 etkinlikmi/apps/activity/models.py:43
+#: etkinlikmi/apps/activity/admin.py:45 etkinlikmi/apps/activity/models.py:46
 msgid "Image"
 msgstr "Resim"
 
-#: etkinlikmi/apps/activity/admin.py:56 etkinlikmi/apps/activity/models.py:48
+#: etkinlikmi/apps/activity/admin.py:48 etkinlikmi/apps/activity/models.py:51
 msgid "Statement"
 msgstr "Açıklama"
 
-#: etkinlikmi/apps/activity/apps.py:7 etkinlikmi/apps/activity/models.py:51
-#: etkinlikmi/apps/activity/models.py:72 etkinlikmi/apps/activity/models.py:84
-#: etkinlikmi/apps/activity/models.py:102
+#: etkinlikmi/apps/activity/apps.py:7 etkinlikmi/apps/activity/models.py:54
+#: etkinlikmi/apps/activity/models.py:72 etkinlikmi/apps/activity/models.py:90
 msgid "Activity"
 msgstr "Etkinlik"
 
@@ -90,74 +81,74 @@ msgstr "Ücretsiz"
 msgid "User"
 msgstr "Kullanıcı"
 
-#: etkinlikmi/apps/activity/models.py:27 etkinlikmi/apps/core/models.py:35
-#: etkinlikmi/apps/core/models.py:38
-msgid "Kind"
-msgstr "Tür"
-
-#: etkinlikmi/apps/activity/models.py:28
-msgid "Name"
-msgstr "İsim"
-
-#: etkinlikmi/apps/activity/models.py:31
-msgid "Starting Date"
-msgstr "Başlangıç Tarihi"
-
-#: etkinlikmi/apps/activity/models.py:32
-msgid "End Date"
-msgstr "Bitiş Tarihi"
-
-#: etkinlikmi/apps/activity/models.py:33
-msgid "Starting Time"
-msgstr "Başlangıç Saati"
-
-#: etkinlikmi/apps/activity/models.py:34
-msgid "End Time"
-msgstr "Bitiş Saati"
-
-#: etkinlikmi/apps/activity/models.py:38
-msgid "Wage Status"
-msgstr "Ücret Durumu"
-
-#: etkinlikmi/apps/activity/models.py:52
-msgid "Activitys"
-msgstr "Etkinlikler"
-
-#: etkinlikmi/apps/activity/models.py:68 etkinlikmi/apps/core/models.py:23
-#: etkinlikmi/apps/core/models.py:27 etkinlikmi/apps/user/models.py:44
+#: etkinlikmi/apps/activity/models.py:27 etkinlikmi/apps/core/models.py:23
+#: etkinlikmi/apps/core/models.py:26 etkinlikmi/apps/user/models.py:44
 msgid "City"
 msgstr "Şehir"
 
-#: etkinlikmi/apps/activity/models.py:70 etkinlikmi/apps/core/models.py:24
+#: etkinlikmi/apps/activity/models.py:28 etkinlikmi/apps/core/models.py:34
+#: etkinlikmi/apps/core/models.py:37
+msgid "Kind"
+msgstr "Tür"
+
+#: etkinlikmi/apps/activity/models.py:29
+msgid "Address"
+msgstr "Adres"
+
+#: etkinlikmi/apps/activity/models.py:30
 msgid "Coordinate"
 msgstr "Koordinat"
 
-#: etkinlikmi/apps/activity/models.py:77 etkinlikmi/apps/activity/models.py:78
-msgid "Activity Address"
-msgstr "Etkinlik Adresi"
+#: etkinlikmi/apps/activity/models.py:31
+msgid "Name"
+msgstr "İsim"
 
-#: etkinlikmi/apps/activity/models.py:87 etkinlikmi/apps/core/models.py:47
-#: etkinlikmi/apps/core/models.py:54
+#: etkinlikmi/apps/activity/models.py:34
+msgid "Starting Date"
+msgstr "Başlangıç Tarihi"
+
+#: etkinlikmi/apps/activity/models.py:35
+msgid "End Date"
+msgstr "Bitiş Tarihi"
+
+#: etkinlikmi/apps/activity/models.py:36
+msgid "Starting Time"
+msgstr "Başlangıç Saati"
+
+#: etkinlikmi/apps/activity/models.py:37
+msgid "End Time"
+msgstr "Bitiş Saati"
+
+#: etkinlikmi/apps/activity/models.py:41
+msgid "Wage Status"
+msgstr "Ücret Durumu"
+
+#: etkinlikmi/apps/activity/models.py:55
+msgid "Activitys"
+msgstr "Etkinlikler"
+
+#: etkinlikmi/apps/activity/models.py:75 etkinlikmi/apps/core/models.py:46
+#: etkinlikmi/apps/core/models.py:53
 msgid "Social Account"
 msgstr "Sosyal Hesap"
 
-#: etkinlikmi/apps/activity/models.py:92
+#: etkinlikmi/apps/activity/models.py:80
 msgid "Activity Link"
 msgstr "Etkinlik Linki"
 
-#: etkinlikmi/apps/activity/models.py:93
+#: etkinlikmi/apps/activity/models.py:81
 msgid "Activity Links"
 msgstr "Etkinlik Linkleri"
 
-#: etkinlikmi/apps/activity/models.py:109
+#: etkinlikmi/apps/activity/models.py:97
 msgid "Activity Document"
 msgstr "Etkinlik Döküman"
 
-#: etkinlikmi/apps/activity/models.py:110
+#: etkinlikmi/apps/activity/models.py:98
 msgid "Activity Documents"
 msgstr "Etkinlik Dökümanlar"
 
-#: etkinlikmi/apps/activity/models.py:115
+#: etkinlikmi/apps/activity/models.py:103
 msgid "Size"
 msgstr "Boyut"
 
@@ -173,19 +164,19 @@ msgstr "Oluşturulma Tarihi"
 msgid "Update Date"
 msgstr "Güncellenme Tarihi"
 
-#: etkinlikmi/apps/core/models.py:28
+#: etkinlikmi/apps/core/models.py:27
 msgid "Cities"
 msgstr "Şehirler"
 
-#: etkinlikmi/apps/core/models.py:39
+#: etkinlikmi/apps/core/models.py:38
 msgid "Kinds"
 msgstr "Türler"
 
-#: etkinlikmi/apps/core/models.py:50
+#: etkinlikmi/apps/core/models.py:49
 msgid "Style Class"
 msgstr "Stil Sınıfı"
 
-#: etkinlikmi/apps/core/models.py:55
+#: etkinlikmi/apps/core/models.py:54
 msgid "Social Accounts"
 msgstr "Sosyal Hesaplar"
 
@@ -255,3 +246,16 @@ msgstr "Çalışan"
 #: etkinlikmi/apps/user/models.py:55
 msgid "Users"
 msgstr "Kullanıcılar"
+
+#: etkinlikmi/apps/user/serializers/base_serializers.py:57
+#: etkinlikmi/apps/user/serializers/base_serializers.py:89
+msgid "The two password fields didn't match."
+msgstr "Şifreler eşleşmedi."
+
+#: etkinlikmi/apps/user/serializers/base_serializers.py:66
+msgid "This field is required."
+msgstr "Bu alan zorunlu."
+
+#: etkinlikmi/apps/user/serializers/base_serializers.py:101
+msgid "Your old password was entered incorrectly. Please enter it again."
+msgstr "Eski şifrenizi yanlış girdiniz. Lütfen tekrar deneyin."

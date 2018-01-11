@@ -63,8 +63,8 @@ class Activity(DateModel):
             self.image = None
             super(Activity, self).save(*args, **kwargs)
             self.image = saved_image
-
-        return super(Activity, self).save(*args, **kwargs)
+        else:
+            return super(Activity, self).save(*args, **kwargs)
 
 
 class ActivityLink(DateModel):

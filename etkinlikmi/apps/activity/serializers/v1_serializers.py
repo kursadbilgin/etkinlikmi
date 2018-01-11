@@ -5,7 +5,6 @@ from .base_serializers import (
     ActivityCreateSerializer, ActivityRetrieveSerializer,
     ActivityUpdateSerializer
 )
-from core.serializers import CitySerializerV1, KindSerializerV1
 
 
 class ActivityLinkSerializerV1(ActivityLinkSerializer):
@@ -21,8 +20,7 @@ class ActivityListSerializerV1(ActivityListSerializer):
 
 
 class ActivityCreateSerializerV1(ActivityCreateSerializer):
-    city = CitySerializerV1(read_only=True, many=True)
-    kind = KindSerializerV1(read_only=True, many=True)
+    pass
 
 
 class ActivityRetrieveSerializerV1(ActivityRetrieveSerializer):
@@ -30,5 +28,4 @@ class ActivityRetrieveSerializerV1(ActivityRetrieveSerializer):
 
 
 class ActivityUpdateSerializerV1(ActivityUpdateSerializer):
-    city = CitySerializerV1(read_only=True, many=True)
-    kind = KindSerializerV1(read_only=True, many=True)
+    pass
