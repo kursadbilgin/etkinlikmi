@@ -70,7 +70,7 @@ class ActivityCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Activity
         fields = (
-            'city', 'kind', 'name', 'address', 'coordinate', 'starting_date',
+            'id', 'city', 'kind', 'name', 'address', 'coordinate', 'starting_date',
             'starting_time', 'end_date', 'end_time', 'wage_status', 'image', 'statement'
         )
 
@@ -84,7 +84,7 @@ class ActivityUpdateSerializer(ActivitySerializer):
     class Meta:
         model = Activity
         fields = (
-            'city', 'kind', 'address', 'coordinate', 'name', 'starting_date',
+            'id', 'city', 'kind', 'address', 'coordinate', 'name', 'starting_date',
             'starting_time', 'end_date', 'end_time', 'wage_status', 'image',
             'statement', 'activity_documents', 'activity_links'
         )
