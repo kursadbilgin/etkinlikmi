@@ -63,6 +63,7 @@ class Activity(DateModel):
             self.image = None
             super(Activity, self).save(*args, **kwargs)
             self.image = saved_image
+            self.save()
         else:
             return super(Activity, self).save(*args, **kwargs)
 
